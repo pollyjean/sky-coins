@@ -1,4 +1,4 @@
-# Sky Coins
+# Sky App
 
 - Typescript
 - React
@@ -8,3 +8,4 @@
 - React Helmet Async
 - ApexCharts
 - Recoil
+- React Hook Form

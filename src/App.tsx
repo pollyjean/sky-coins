@@ -1,9 +1,11 @@
-import GlobalStyle from "./assets/GlobalStyle";
+import GlobalStyle from "./GlobalStyle";
+import TodoList from "./TodoList";
 
 const App = () => {
   return (
     <>
       <GlobalStyle />
+      <TodoList />
     </>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "styled-components";
-import { darkMode } from "./assets/theme";
+import { darkMode } from "./theme";
 import App from "./App";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
