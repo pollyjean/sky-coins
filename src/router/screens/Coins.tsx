@@ -1,46 +1,53 @@
 import styled from "styled-components";
+import { fetchCoinList, ICoinList } from "../../api.ts";
+import { useQuery } from "react-query";
+import Loading from "../components/Loading.tsx";
+import { Link } from "react-router-dom";
 
 const CoinListContainer = styled.ul`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
   gap: 1rem;
-  justify-content: flex-start;
-  align-items: stretch;
 `;
 const CoinItem = styled.li`
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  background-color: rgba(255, 255, 255, 0.15);
-  border-radius: 0.5rem;
-  padding: 1rem 2rem;
-  div {
+  width: 100%;
+  a {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
-    text-align: center;
-    gap: 1rem;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    gap: 0.5rem;
+    img {
+      height: 1.5rem;
+    }
   }
 `;
+
 const Coins = () => {
+  const { isLoading, isError, data } = useQuery<ICoinList[]>(["coinList"], fetchCoinList);
+  if (isError) {
+    console.log(isError);
+    return <div>Error</div>;
+  }
   return (
-    <CoinListContainer>
-      <CoinItem>
-        <div>
-          <strong>Name</strong>
-          <span>text</span>
-        </div>
-        <div>
-          <strong>Name</strong>
-          <span>text</span>
-        </div>
-        <div>
-          <strong>Name</strong>
-          <span>text</span>
-        </div>
-      </CoinItem>
-    </CoinListContainer>
+    <>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <CoinListContainer>
+          {data?.slice(0, 100).map((coin) => (
+            <CoinItem key={coin.id}>
+              <Link to={coin.id}>
+                <img src={`https://static.coinpaprika.com/coin/${coin.id}/logo.png`} alt="" />
+                {coin.name}
+              </Link>
+            </CoinItem>
+          ))}
+        </CoinListContainer>
+      )}
+    </>
   );
 };
 
