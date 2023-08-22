@@ -7,3 +7,4 @@
 - React Query
 - React Helmet Async
 - ApexCharts
+- Recoil
