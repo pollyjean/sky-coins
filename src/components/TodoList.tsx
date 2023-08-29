@@ -1,21 +1,30 @@
 import { useRecoilValue } from "recoil";
+import { todoSelector } from "../atoms";
 import CreateTodo from "./CreateTodo";
 import Header from "./Header";
 import Todo from "./Todo";
-import { ITodoList, todoAtom } from "../atoms";
 
 const TodoList = () => {
-  const todoItem = useRecoilValue<ITodoList[]>(todoAtom);
+  const selectorOutput = useRecoilValue(todoSelector);
+  console.log(selectorOutput);
   return (
-    <div>
+    <>
       <Header />
-      <ul>
-        {todoItem.map((todo) => (
-          <Todo {...todo} />
-        ))}
-      </ul>
+      {selectorOutput.map((categoryItem) =>
+        categoryItem.length !== 0 ? (
+          <>
+            {categoryItem.length !== 0 && <h2>{categoryItem[0].category}</h2>}
+            <ul>
+              {categoryItem.map((todo) => (
+                <Todo key={todo.id} {...todo} />
+              ))}
+            </ul>
+            {categoryItem.length !== 0 && <hr />}
+          </>
+        ) : null
+      )}
       <CreateTodo />
-    </div>
+    </>
   );
 };
 

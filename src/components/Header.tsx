@@ -8,6 +8,7 @@ const Header = () => {
       <h1>
         Sky TO-DO (<span>{todoList.length}</span>)
       </h1>
+      <hr />
     </header>
   );
 };

@@ -1,13 +1,11 @@
 import { ITodoList } from "../atoms";
+import ChangeCategory from "./ChangeCategory";
 
-const Todo = ({ id, text, category }: ITodoList) => {
+const Todo = (props: ITodoList) => {
   return (
-    <li key={id}>
-      {category === "TODO" ? <i className="bi bi-square"></i> : null}
-      {category === "DOING" ? <i className="bi bi-square"></i> : null}
-      {category === "DONE" ? <i className="bi bi-square"></i> : null}
-      <span>{text}</span>
-      <button>Done</button>
+    <li>
+      <ChangeCategory {...props} />
+      <span> {props.text} </span>
     </li>
   );
 };
