@@ -6,6 +6,11 @@ export interface ITodoList {
   category: "TODO" | "DOING" | "DONE";
 }
 
+export const categoryAtom = atom({
+  key: "category",
+  default: "TODO",
+});
+
 export const todoAtom = atom<ITodoList[]>({
   key: "todoList",
   default: [],
@@ -13,9 +18,9 @@ export const todoAtom = atom<ITodoList[]>({
 
 export const todoSelector = selector({
   key: "todoSelector",
-  get: ({ get }) => [
-    get(todoAtom).filter((item) => item.category === "TODO"),
-    get(todoAtom).filter((item) => item.category === "DOING"),
-    get(todoAtom).filter((item) => item.category === "DONE"),
-  ],
+  get: ({ get }) => {
+    const todoList = get(todoAtom);
+    const category = get(categoryAtom);
+    return [todoList.filter((item) => item.category === category)];
+  },
 });
