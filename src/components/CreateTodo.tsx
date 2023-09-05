@@ -1,18 +1,21 @@
-import { useSetRecoilState } from "recoil";
-import { ITodoList, todoAtom } from "../atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { Categories, ITodoList, categoryAtom, todoAtom } from "../atoms";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { setLocalStorage } from "../utilities/storages";
 
 interface ITodoForm {
   todo: string;
 }
 
 const CreateTodo = () => {
-  const setTodoList = useSetRecoilState<ITodoList[]>(todoAtom);
+  const [todoList, setTodoList] = useRecoilState<ITodoList[]>(todoAtom);
+  const category = useRecoilValue(categoryAtom);
   const { register, handleSubmit, setValue } = useForm<ITodoForm>();
   const onSubmit: SubmitHandler<ITodoForm> = ({ todo }) => {
-    setTodoList((recentTodo) => [{ text: todo, category: "TODO", id: Date.now() }, ...recentTodo]);
+    setTodoList((recentTodo) => [{ text: todo, category: category as Categories, id: Date.now() }, ...recentTodo]);
     setValue("todo", "");
   };
+  setLocalStorage(todoList);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <label htmlFor="todo">To-Do</label>

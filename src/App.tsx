@@ -1,5 +1,5 @@
-import GlobalStyle from "./GlobalStyle";
-import TodoList from "./components/TodoList";
+import GlobalStyle from "./utilities/GlobalStyle";
+import TodoList from "./screens/TodoList";
 
 const App = () => {
   return (

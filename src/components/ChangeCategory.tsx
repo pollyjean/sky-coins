@@ -1,40 +1,39 @@
-import { useSetRecoilState } from "recoil";
-import { ITodoList, todoAtom } from "../atoms";
+import { useRecoilState } from "recoil";
+import { Categories, ITodoList, todoAtom } from "../atoms";
+import { setLocalStorage } from "../utilities/storages";
 
 const ChangeCategory = ({ id, category }: ITodoList) => {
-  const setTodoList = useSetRecoilState(todoAtom);
+  const [todoList, setTodoList] = useRecoilState(todoAtom);
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const {
-      currentTarget: { name },
-    } = event;
     setTodoList((current): ITodoList[] => {
       const todo = current.map((item) => {
         if (item.id === id) {
           return {
             ...item,
-            category: name as ITodoList["category"],
+            category: event.currentTarget.name,
           };
         }
         return item;
       });
-      return todo;
+      return todo as ITodoList[];
     });
   };
+  setLocalStorage(todoList);
   return (
     <>
-      {category !== "TODO" && (
-        <button name="TODO" onClick={onClick}>
-          Change Todo
+      {category !== Categories.TODO && (
+        <button name={Categories.TODO} onClick={onClick}>
+          Todo &rarr;
         </button>
       )}
-      {category !== "DOING" && (
-        <button name="DOING" onClick={onClick}>
-          Change Doing
+      {category !== Categories.DOING && (
+        <button name={Categories.DOING} onClick={onClick}>
+          Doing &rarr;
         </button>
       )}
-      {category !== "DONE" && (
-        <button name="DONE" onClick={onClick}>
-          Change Done
+      {category !== Categories.DONE && (
+        <button name={Categories.DONE} onClick={onClick}>
+          Done &rarr;
         </button>
       )}
     </>

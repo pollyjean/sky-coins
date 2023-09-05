@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { ThemeProvider } from "styled-components";
-import { darkMode } from "./theme";
+import { darkMode } from "./utilities/theme";
 import App from "./App";
 import { RecoilRoot } from "recoil";
 

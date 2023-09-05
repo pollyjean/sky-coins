@@ -1,19 +1,26 @@
 import { atom, selector } from "recoil";
+import { getLocalStorage } from "./utilities/storages";
+
+export enum Categories {
+  "TODO" = "TODO",
+  "DOING" = "DOING",
+  "DONE" = "DONE",
+}
 
 export interface ITodoList {
   id: number;
   text: string;
-  category: "TODO" | "DOING" | "DONE";
+  category: Categories;
 }
 
 export const categoryAtom = atom({
   key: "category",
-  default: "TODO",
+  default: Categories.TODO,
 });
 
 export const todoAtom = atom<ITodoList[]>({
   key: "todoList",
-  default: [],
+  default: getLocalStorage(),
 });
 
 export const todoSelector = selector({
