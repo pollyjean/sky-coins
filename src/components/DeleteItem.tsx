@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { ITodoList, todoAtom } from "../atoms";
+import { ITodoList, todoAtom } from "../atomsTodo";
 import { setLocalStorage } from "../utilities/storages";
 
 const DeleteItem = () => {

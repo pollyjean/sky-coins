@@ -1,4 +1,4 @@
-import { ITodoList } from "../atoms";
+import { ITodoList } from "../atomsTodo";
 
 const STORAGE_KEY = "todoStorage";
 

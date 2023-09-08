@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { Categories, categoryAtom } from "../atoms";
+import { Categories, categoryAtom } from "../atomsTodo";
 
 const SelectCategories = () => {
   const [category, setCategory] = useRecoilState(categoryAtom);

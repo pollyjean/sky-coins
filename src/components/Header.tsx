@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil";
-import { ITodoList, todoAtom } from "../atoms";
+import { ITodoList, todoAtom } from "../atomsTodo";
 
 const Header = () => {
   const todoList = useRecoilValue<ITodoList[]>(todoAtom);

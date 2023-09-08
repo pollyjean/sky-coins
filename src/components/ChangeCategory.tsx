@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { Categories, ITodoList, todoAtom } from "../atoms";
+import { Categories, ITodoList, todoAtom } from "../atomsTodo";
 import { setLocalStorage } from "../utilities/storages";
 
 const ChangeCategory = ({ id, category }: ITodoList) => {

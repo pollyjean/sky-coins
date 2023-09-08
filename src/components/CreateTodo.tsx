@@ -1,5 +1,5 @@
 import { useRecoilState, useRecoilValue } from "recoil";
-import { Categories, ITodoList, categoryAtom, todoAtom } from "../atoms";
+import { Categories, ITodoList, categoryAtom, todoAtom } from "../atomsTodo";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { setLocalStorage } from "../utilities/storages";
 

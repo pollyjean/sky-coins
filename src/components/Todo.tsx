@@ -1,4 +1,4 @@
-import { ITodoList } from "../atoms";
+import { ITodoList } from "../atomsTodo";
 import ChangeCategory from "./ChangeCategory";
 import DeleteItem from "./DeleteItem";
 

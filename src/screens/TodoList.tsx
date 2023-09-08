@@ -1,7 +1,7 @@
 import { useRecoilValue } from "recoil";
 import CreateTodo from "../components/CreateTodo";
 import Header from "../components/Header";
-import { ITodoList, todoSelector } from "../atoms";
+import { ITodoList, todoSelector } from "../atomsTodo";
 import Todo from "../components/Todo";
 import SelectCategories from "../components/SelectCategories";
 
