@@ -33,18 +33,12 @@ const App = () => {
     const {
       currentTarget: { value },
     } = event;
-    if (+value === 0) {
-      event.currentTarget.select();
-    }
     setMinutes(String(Number(value)));
   };
   const handleHours = (event: React.FormEvent<HTMLInputElement>) => {
     const {
       currentTarget: { value },
     } = event;
-    if (+value === 0) {
-      event.currentTarget.select();
-    }
     setHours(String(Number(value)));
   };
   return (
